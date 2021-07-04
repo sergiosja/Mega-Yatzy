@@ -3,23 +3,69 @@
     <head>
         <meta charset="UTF-8">
         <title> Main | Mega Yatzy</title>
-        <link rel="stylesheet" href="../CSS/main.css">
+        <link rel="stylesheet" href="./CSS/main.css">
     </head>
     <body>
         <h1 class="title"> Mega Yatzy </h1>
 
-        <div class="btn">
+        <div class="center">
             <button onclick="rolldice()" id="diceroller"> Roll dice </button>
         </div>
 
         <ul>
-            <li id="dice-one">0</li>
-            <li id="dice-two">0</li>
-            <li id="dice-three">0</li>
-            <li id="dice-four">0</li>
-            <li id="dice-five">0</li>
-            <li id="dice-six">0</li>
+            <li onclick="lock(0)" class="die"> 0 </li>
+            <li onclick="lock(1)" class="die"> 0 </li>
+            <li onclick="lock(2)" class="die"> 0 </li>
+            <li onclick="lock(3)" class="die"> 0 </li>
+            <li onclick="lock(4)" class="die"> 0 </li>
+            <li onclick="lock(5)" class="die"> 0 </li>
         </ul>
-        <script type="text/javascript" src="../JavaScript/main.js"></script>
+
+        <div class="center">
+            <button onclick="collapse(0)" type="button" class="categories"> Ones through Sixes </button>
+            <div class="content">
+                <button> Ones </button>
+                <button> Twos </button>
+                <button> Threes </button>
+                <button> Fours </button>
+                <button> Fives </button>
+                <button> Sixes </button>
+                <button> Bonus </button>
+            </div>
+
+            <button onclick="collapse(1)" type="button" class="categories"> Kinds </button>
+            <div class="content">
+                <button> One pair </button>
+                <button> Two pairs </button>
+                <button> Three pairs </button>
+            </div>
+
+            <button onclick="collapse(2)" type="button" class="categories"> Straights </button>
+            <div class="content">
+                <button> Small straight </button>
+                <button> Big straight </button>
+                <button> Full straight </button>
+            </div>
+
+            <button onclick="collapse(3)" type="button" class="categories"> Settlements </button>
+            <div class="content">
+                <button> Cottage </button>
+                <button> House </button>
+                <button> Tower </button>
+            </div>
+
+            <button onclick="collapse(4)" type="button" class="categories"> Chance, Yatzy, Straight Flush </button>
+            <div class="content">
+                <button> Chance </button>
+                <button> Yatzy </button>
+                <button> Straight Flush </button>
+            </div>
+        </div>
+
+        <div class="center">
+            <button id="restart"> <a href=""> Restart </a> </button>
+        </div>
+            
+        <script type="text/javascript" src="./JavaScript/main.js"></script>
     </body>
 </html>

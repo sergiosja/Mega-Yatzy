@@ -5,15 +5,30 @@ body {
 
 .title{
     text-align: center;
-}
-
-.btn{
-    display: flex;
-    justify-content: center;
+    font-size: 70px;
 }
 
 button{
     cursor: pointer;
+    font-size: 40px;
+}
+
+button a{
+    color: #010103;
+    text-decoration: none;
+}
+
+#restart{
+    background: #e0dbcd;
+    border: 3px solid #2c2d2b;
+}
+
+
+/* Dice */
+
+#diceroller{
+    background: #e0dbcd;
+    border: 3px solid #2c2d2b;
 }
 
 ul{
@@ -24,13 +39,51 @@ ul{
 
 ul li{
     display: inline-block;
-    padding: 5px 15px 8px;
+    padding: 8px 20px;
     margin: 5px;
 
-    font-size: 30px;
-
-    border: 3px solid transparent;
-    border-image: url(../Images/background.png) 30 round;
+    font-size: 40px;
+    border: 3px solid #2c2d2b;
 
     cursor: pointer;
+}
+
+
+/* Collapsible */
+
+.categories{
+    background: #e0dbcd;
+    border: 3px solid #2c2d2b;
+    
+    text-align: center;    
+    font-size: 30px;
+    cursor: pointer;
+    
+    margin-top: 10px;
+    padding: 18px;
+    outline: none;
+    width: 80%;
+
+    align-self: center;
+}
+
+.content{
+    background: #e0dbcd;
+
+    margin-top: 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;    
+}
+
+.content button{
+    background: #e0dbcd;
+    border: 3px solid #2c2d2b;
+}
+
+
+/* Helper to center elements within a div */
+
+.center{
+    text-align: center;
 }
