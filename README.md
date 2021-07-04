@@ -1,1 +1,1 @@
-"# Mega-Yatzy" 
+# Mega-Yatzy
