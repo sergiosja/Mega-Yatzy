@@ -1,0 +1,36 @@
+body {
+    background: #e0dbcd;
+    color: #010103;
+}
+
+.title{
+    text-align: center;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    cursor: pointer;
+}
+
+ul{
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+}
+
+ul li{
+    display: inline-block;
+    padding: 5px 15px 8px;
+    margin: 5px;
+
+    font-size: 30px;
+
+    border: 3px solid transparent;
+    border-image: url(../Images/background.png) 30 round;
+
+    cursor: pointer;
+}
