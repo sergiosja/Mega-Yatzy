@@ -13,14 +13,15 @@ const finished = [0, 0, 0, 0, 0, 0];
 const modal = document.querySelector("#modal");
 const sumbutton = document.querySelector("#sumbutton");
 
-/* Total sum and bonus */
-let totalsum = 0;
-let bonus = 0;
-
 /* Die rolls */
 const dierollmsg = document.querySelector("#dieroll-msg");
 let remainingrolls = 3;
 let rolled = 0;
+
+/* Total sum and bonus */
+let totalsum = 0;
+let bonus = 0;
+
 
 /* Roll dice */
 function rolldice() {
@@ -123,14 +124,10 @@ function collapse(index) {
 /* Opens modal and shows stats */
 function gameover() {
     modal.style.display = "block";
-    let timespent = calculateTime();
-
-    if (bonus >= 84) {
-        totalsum += 50;
-    }
+    totalsum += bonus >= 84 ? 50 : 0;
 
     document.querySelector("#modal-score").innerHTML = "You got a total score of " + totalsum + ".";
-    document.querySelector("#modal-time").innerHTML = timespent;
+    document.querySelector("#modal-time").innerHTML = calculateTime();
 }
 
 /* Helper function to calculate game time */
