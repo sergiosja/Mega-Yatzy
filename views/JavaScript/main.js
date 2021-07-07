@@ -17,9 +17,24 @@ const sumbutton = document.querySelector("#sumbutton");
 let totalsum = 0;
 let bonus = 0;
 
+/* Die rolls */
+const dierollmsg = document.querySelector("#dieroll-msg");
+let remainingrolls = 3;
+let rolled = 0;
 
 /* Roll dice */
 function rolldice() {
+    if (remainingrolls < 1) {
+        dierollmsg.innerHTML = "No rolls left.";
+        return;
+    }
+
+    rolled++;
+    remainingrolls--;
+    dierollmsg.innerHTML = remainingrolls == 1 ? "Rolled the dice, 1 roll left." :
+                           remainingrolls == 0 ? "Rolled the dice, no rolls left." :
+                           "Rolled the dice, " + remainingrolls + " rolls left.";
+
     for (let i = 0; i < 6; i++) {
         if (!locked[i]) {
             die[i].value = Math.ceil(Math.random()*6);
@@ -75,6 +90,10 @@ function disable(e) {
     category[e].disabled = true;
     category[e].style.background = "#4b5320";
     category[e].style.color = "#010103";
+
+    rolled = 0;
+    remainingrolls += 3;
+    dierollmsg.innerHTML = "Check! " + remainingrolls + " rolls left.";
 
     window.scroll({ top: 0, behavior: "smooth" });
     checkFinished();

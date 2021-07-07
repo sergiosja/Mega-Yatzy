@@ -4,16 +4,22 @@ body {
 }
 
 .title{
+    margin: 0px;
     text-align: center;
     font-size: 70px;
     font-family: 'Arial Black';
+}
+
+#dieroll-msg{
+    text-align: center;
+    font-size: 30px;
 }
 
 
 /* Buttons */
 button{
     cursor: pointer;
-    font-size: 40px;
+    font-size: 30px;
     font-family: 'Arial Black';
     border-radius: 5px;
 }
@@ -88,9 +94,8 @@ ul li{
 
 .content{
     background: #e0dbcd;
-
-    margin-top: 10px;
     max-height: 0;
+    margin-top: 10px;
     overflow: hidden;
     transition: max-height 0.2s ease-out;    
 }
@@ -100,7 +105,7 @@ ul li{
 }
 
 .inner{
-    font-size: 20px;
+    font-size: 25px;
 }
 
 
@@ -144,8 +149,12 @@ ul li{
         font-size: 60px;
     }
 
-    #diceroller {
+    #diceroller{
         padding: 0px 10px;
+    }
+
+    #dieroll-msg{
+        font-size: 40px;
     }
 
     ul li{
