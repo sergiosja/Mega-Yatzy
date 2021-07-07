@@ -1,17 +1,21 @@
 /* Dice relevant */
-const diceroller = document.querySelector("#diceroller")
+const diceroller = document.querySelector("#diceroller");
 const die = document.getElementsByClassName("die");
-const dievalues = [0, 0, 0, 0, 0, 0]
-const locked = [false, false, false, false, false, false]
+const dievalues = [0, 0, 0, 0, 0, 0];
+const locked = [false, false, false, false, false, false];
 
 /* Categories relevant */
 const categories = document.getElementsByClassName("categories");
 const category = document.getElementsByClassName("category");
 const finished = [0, 0, 0, 0, 0, 0];
 
-/* Total sum */
-let totalsum = 0
+/* Modal relevant */
+const modal = document.querySelector("#modal");
+const sumbutton = document.querySelector("#sumbutton");
 
+/* Total sum and bonus */
+let totalsum = 0;
+let bonus = 0;
 
 
 /* Roll dice */
@@ -57,8 +61,8 @@ function checkFinished() {
     for (let i = 0; i < finished.length; i++) {
         if (finished[i] == 6 || (i > 0 && finished[i] == 3)) {
             categories[i].disabled = true;
-            categories[i].style.background = "#2c2d2b";
-            categories[i].style.color = "#e0dbcd";
+            categories[i].style.background = "#4b5320";
+            categories[i].style.color = "#010103";
             finished[i] = 10;
             collapse(i);
         }
@@ -69,10 +73,10 @@ function checkFinished() {
 /* Disables buttons */
 function disable(e) {
     category[e].disabled = true;
-    category[e].style.background = "#a76932";
+    category[e].style.background = "#4b5320";
     category[e].style.color = "#010103";
-    window.scroll({ top: 0, behavior: "smooth" });
 
+    window.scroll({ top: 0, behavior: "smooth" });
     checkFinished();
     unlock();
 }
@@ -94,4 +98,37 @@ function collapse(index) {
             categories[i].nextElementSibling.style.maxHeight = null;
         }
     }
+}
+
+
+/* Opens modal and shows stats */
+function gameover() {
+    modal.style.display = "block";
+    let timespent = calculateTime();
+
+    if (bonus >= 84) {
+        totalsum += 50;
+    }
+
+    document.querySelector("#modal-score").innerHTML = "You got a total score of " + totalsum + ".";
+    document.querySelector("#modal-time").innerHTML = timespent;
+}
+
+/* Helper function to calculate game time */
+function calculateTime() {
+    let seconds = Math.round(performance.now() / 1000);
+    let text = "You spent ";
+
+    if (seconds > 60) {
+        const minutes = Math.round(seconds / 60);
+        if (minutes > 1) {
+            text += minutes + " minutes and " + seconds % 60 + " seconds playing."
+        } else {
+            text += minutes + " minute and " + seconds % 60 + " seconds playing."
+        }
+    } else {
+        text += seconds + " seconds playing."
+    }
+
+    return text;
 }

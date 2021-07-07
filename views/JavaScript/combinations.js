@@ -3,6 +3,7 @@ function singles(element) {
     for (let i = 0; i < dievalues.length; i++) {
         if (dievalues[i] == element) {
             totalsum += dievalues[i];
+            bonus += dievalues[i];
         }
     }
 

@@ -6,10 +6,21 @@
         <link rel="stylesheet" href="./CSS/main.css">
     </head>
     <body>
-        <h1 class="title"> Mega Yatzy </h1>
+        <h1 class="title"> MEGA YATZY </h1>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <p id="modal-score"></p>
+                <p id="modal-time"></p>
+
+                <div class="center bottom-btn">
+                    <button> <a href=""> Go again? </a> </button>
+                </div>    
+            </div>
+        </div>
 
         <div class="center">
-            <button onclick="rolldice()" id="diceroller"> Roll dice </button>
+            <button onclick="rolldice()" id="diceroller"> ROLL </button>
         </div>
 
         <ul>
@@ -22,58 +33,58 @@
         </ul>
 
         <div class="center">
-            <button onclick="collapse(0)" type="button" class="categories"> Ones through Sixes </button>
+            <button onclick="collapse(0)" type="button" class="categories"> ONES THROUGH SIXES </button>
             <div class="content">
-                <button class="category" onclick="singles(1)"> Ones </button>
-                <button class="category" onclick="singles(2)"> Twos </button>
-                <button class="category" onclick="singles(3)"> Threes </button>
-                <button class="category" onclick="singles(4)"> Fours </button>
-                <button class="category" onclick="singles(5)"> Fives </button>
-                <button class="category" onclick="singles(6)"> Sixes </button>
+                <button class="category inner" onclick="singles(1)"> ONES </button>
+                <button class="category inner" onclick="singles(2)"> TWOS </button>
+                <button class="category inner" onclick="singles(3)"> THREES </button>
+                <button class="category inner" onclick="singles(4)"> FOURS </button>
+                <button class="category inner" onclick="singles(5)"> FIVES </button>
+                <button class="category inner" onclick="singles(6)"> SIXES </button>
             </div>
 
-            <button onclick="collapse(1)" type="button" class="categories"> Pairs </button>
+            <button onclick="collapse(1)" type="button" class="categories"> PAIRS </button>
             <div class="content">
-                <button class="category" onclick="pairs(6, true)"> One pair </button>
-                <button class="category" onclick="pairs(7, true)"> Two pairs </button>
-                <button class="category" onclick="pairs(8, true)"> Three pairs </button>
+                <button class="category inner" onclick="pairs(6, true)"> ONE PAIR </button>
+                <button class="category inner" onclick="pairs(7, true)"> TWO PAIRS </button>
+                <button class="category inner" onclick="pairs(8, true)"> THREE PAIRS </button>
             </div>
 
-            <button onclick="collapse(2)" type="button" class="categories"> Kinds </button>
+            <button onclick="collapse(2)" type="button" class="categories"> KINDS </button>
             <div class="content">
-                <button class="category" onclick="kinds(9, true)"> Three of a kind </button>
-                <button class="category" onclick="kinds(10, true)"> Four of a kind </button>
-                <button class="category" onclick="kinds(11, true)"> Five of a kind </button>
+                <button class="category inner" onclick="kinds(9, true)"> THREE OF A KIND </button>
+                <button class="category inner" onclick="kinds(10, true)"> FOUR OF A KIND </button>
+                <button class="category inner" onclick="kinds(11, true)"> FIVE OF A KIND </button>
             </div>
 
-            <button onclick="collapse(3)" type="button" class="categories"> Straights </button>
+            <button onclick="collapse(3)" type="button" class="categories"> STRAIGHTS </button>
             <div class="content">
-                <button class="category" onclick="straights([1, 2, 3, 4, 5], 12)"> Small straight </button>
-                <button class="category" onclick="straights([2, 3, 4, 5, 6], 13)"> Big straight </button>
-                <button class="category" onclick="straights([1, 2, 3, 4, 5, 6], 14)"> Full straight </button>
+                <button class="category inner" onclick="straights([1, 2, 3, 4, 5], 12)"> SMALL STRAIGHT </button>
+                <button class="category inner" onclick="straights([2, 3, 4, 5, 6], 13)"> BIG STRAIGHT </button>
+                <button class="category inner" onclick="straights([1, 2, 3, 4, 5, 6], 14)"> FULL STRAIGHT </button>
             </div>
 
-            <button onclick="collapse(4)" type="button" class="categories"> Settlements </button>
+            <button onclick="collapse(4)" type="button" class="categories"> SETTLEMENTS </button>
             <div class="content">
-                <button class="category" onclick="cottage()"> Cottage </button>
-                <button class="category" onclick="house()"> House </button>
-                <button class="category" onclick="tower()"> Tower </button>
+                <button class="category inner" onclick="cottage()"> COTTAGE </button>
+                <button class="category inner" onclick="house()"> HOUSE </button>
+                <button class="category inner" onclick="tower()"> TOWER </button>
             </div>
 
-            <button onclick="collapse(5)" type="button" class="categories"> Chance, Yatzy, Straight Flush </button>
+            <button onclick="collapse(5)" type="button" class="categories"> CHANCE, YATZY, SF </button>
             <div class="content">
-                <button class="category" onclick="chance()"> Chance </button>
-                <button class="category" onclick="yatzy()"> Yatzy </button>
-                <button class="category" onclick="straightflush([1, 2, 3, 4, 5, 6])"> Straight Flush </button>
+                <button class="category inner" onclick="chance()"> CHANCE </button>
+                <button class="category inner" onclick="yatzy()"> YATZY </button>
+                <button class="category inner" onclick="straightflush([1, 2, 3, 4, 5, 6])"> STRAIGHT FLUSH </button>
             </div>
         </div>
 
         <div class="center bottom-btn">
-            <button> Sum </button>
+            <button onclick="gameover()"> SUM </button>
         </div>
 
         <div class="center bottom-btn">
-            <button> <a href=""> Restart </a> </button>
+            <button> <a href=""> RESTART </a> </button>
         </div>
             
         <script type="text/javascript" src="./JavaScript/combinations.js"></script>
