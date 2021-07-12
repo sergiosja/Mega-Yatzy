@@ -1,0 +1,36 @@
+<head>
+    <title> Sign up | Mega Yatzy </title>
+    <link rel="stylesheet" type="text/css" href="/CSS/login.css"/>
+</head>
+<body>
+    <h1> Sign up </h1>
+
+    <!-- If the user fails to sign up -->
+    <div class="center" id="fail">
+        <ul>
+            <% if (typeof errors != 'undefined') { %>
+                <% errors.forEach (error => { %>
+                    <li> <%= error.message %> </li>
+                <% }) %>
+            <% } %>
+        </ul>
+    </div>
+
+    <form id="register" action="/signup" method="post">
+        <div class="login">
+            <input type="text" id="username" name="username" placeholder="Username">
+            <input type="password" id="password" name="password" placeholder="Password">
+            <input type="password" id="password2" name="password2" placeholder="Confirm password">
+        </div>
+
+        <div class="center">
+            <button type="submit" form="register"> Register </button>
+        </div>
+    </form>
+
+    <br><br>
+    <div class="center">
+        <button> <a href="/"> Back </a> </button>
+    </div>
+</body>
+</html>

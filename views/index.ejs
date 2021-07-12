@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Login | Mega Yatzy </title>
+    <link rel="stylesheet" type="text/css" href="/CSS/login.css">
+</head>
+<body>
+    <h1 class="title"> Log in </h1>
+
+    <!-- If the succesfully signs up or logs out -->
+    <div class="center" id="success">
+        <ul>
+            <% if (messages.success) { %>
+                <li> 
+                    <%= messages.success %>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+
+    <!-- If the user fails to log in -->
+    <div class="center" id="fail">
+        <ul>
+            <% if (messages.error) { %>
+                <li>
+                    <%= messages.error %>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+
+    <form id="log" action="/" method="post">
+        <div class="login">
+            <input type="text" id="username" name="username" placeholder="Username">
+            <input type="password" id="password" name="password" placeholder="Password">
+        </div>
+
+
+        <div class="center">
+            <button form="log" type="submit"> Log in </button>
+        </div>
+
+        <div class="center">
+            <button> <a href="/signup"> No user? Sign up here </a> </button>
+        </div>
+    </form>
+</body>
+</html>

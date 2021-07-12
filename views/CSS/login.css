@@ -1,0 +1,47 @@
+body {
+    background: #e0dbcd;
+    color: #010103;
+}
+
+.title{
+    margin: 0px;
+    text-align: center;
+    font-size: 70px;
+    font-family: 'Arial Black';
+}
+
+
+/* Buttons */
+button{
+    cursor: pointer;
+    font-size: 30px;
+    font-family: 'Arial Black';
+    border-radius: 5px;
+}
+
+button a{
+    color: #010103;
+    text-decoration: none;
+}
+
+.bottom-btn button{
+    margin-top: 30px;
+    background: #e0dbcd;
+    border: 3px solid #2c2d2b;
+}
+
+
+/* Helper to center elements within a div */
+.center{
+    text-align: center;
+}
+
+
+
+
+/*   Adjustments for mobile   */
+@media only screen and (max-device-width: 450px) {
+    button{
+        font-size: 60px;
+    }
+}
