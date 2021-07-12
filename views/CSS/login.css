@@ -4,10 +4,51 @@ body {
 }
 
 .title{
-    margin: 0px;
+    margin: 0 0 50px;
     text-align: center;
     font-size: 70px;
     font-family: 'Arial Black';
+}
+
+
+/* Messages */
+ul li{
+    list-style: none;
+    font-size: 25px;
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+}
+
+#fail ul li{
+    color: red;
+}
+
+#success ul li{
+    color: green;
+}
+
+
+
+/* Login */
+.login{
+    display: block;
+    text-align: center;
+}
+
+.login input{
+    text-align: center;
+    font-size: 40px;
+
+    width: 50%;
+    background: inherit;
+    border: none;
+    border-bottom: 3px groove #010103;
+    margin-bottom: 30px;
+}
+
+.login input:focus{
+    outline:none;
 }
 
 
@@ -17,6 +58,7 @@ button{
     font-size: 30px;
     font-family: 'Arial Black';
     border-radius: 5px;
+    margin: 30px 0 0;
 }
 
 button a{
@@ -41,7 +83,20 @@ button a{
 
 /*   Adjustments for mobile   */
 @media only screen and (max-device-width: 450px) {
+    .title{
+        font-size: 100px;
+    }
+
     button{
+        font-size: 60px;
+    }
+
+    .login input{
+        font-size: 90px;
+        width: 90%;
+    }
+
+    ul li{
         font-size: 60px;
     }
 }
