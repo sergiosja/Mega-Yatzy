@@ -37,16 +37,26 @@ app.listen(PORT, () => {
 
 
 /* Get requests */
-app.get('/', authenticatedNo, (req, res) => {
+app.get('/', keepIn, (req, res) => {
     res.render('index');
 });
 
-app.get('/signup', authenticatedNo, (req, res) => {
+app.get('/signup', keepIn, (req, res) => {
     res.render('signup');
 });
 
-app.get('/user/main', authenticatedYes, (req, res) => {
+app.get('/user/main', keepOut, (req, res) => {
     res.render('main');
+});
+
+app.get('/user/menu', keepOut, (req, res) => {
+    res.render('menu');
+});
+
+app.get('/logout', (req, res) => {
+    req.logOut();
+    req.flash('success', "You have logged out");
+    res.redirect('/');
 });
 
 
@@ -117,7 +127,7 @@ app.post('/signup', async (req, res) => {
 
 
 app.post('/', passport.authenticate('local', {
-    successRedirect: '/user/main',
+    successRedirect: '/user/menu',
     failureRedirect: '/',
     failureFlash: true
     })
@@ -125,16 +135,16 @@ app.post('/', passport.authenticate('local', {
 
 
 /* Prevents logged in users from accesing signup/login screen */
-function authenticatedNo(req, res, next) {
+function keepIn(req, res, next) {
     if (req.isAuthenticated()) {
-        return res.redirect('/user/main');
+        return res.redirect('/user/menu');
     } else {
         next();
     }
 }
 
 /* Only logged in users can access features */
-function authenticatedYes(req, res, next) {
+function keepOut(req, res, next) {
     if (req.isAuthenticated()) {
         next();
     } else {
