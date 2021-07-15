@@ -1,21 +1,21 @@
 /* Dependencies and middleware */
-const express = require('express');
-const session = require('express-session');
-const { request } = require('express');
-const flash = require('express-flash');
-const passport = require('passport');
-const bcrypt = require('bcrypt');
-const path = require('path');
-const PORT = 3130;
+const express = require('express')
+const session = require('express-session')
+const { request } = require('express')
+const flash = require('express-flash')
+const passport = require('passport')
+const bcrypt = require('bcrypt')
+const path = require('path')
+const PORT = 3130
 
-const app = express();
-app.set('view engine', 'ejs');
-app.use(express.urlencoded({extended: false}));
-app.use(express.static(__dirname + '/views'));
+const app = express()
+app.set('view engine', 'ejs')
+app.use(express.urlencoded({extended: false}))
+app.use(express.static(__dirname + '/views'))
 
-const { pool } = require('./database');
-const initializeSession = require('./signup');
-initializeSession(passport);
+const { pool } = require('./database')
+const initializeSession = require('./signup')
+initializeSession(passport)
 
 app.use(
     session({
@@ -23,42 +23,41 @@ app.use(
         resave: false,
         saveUninitialized: false
     })
-);
+)
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(flash())
 
 
 /* Run server */
-app.listen(PORT);
-
+app.listen(PORT)
 
 /* Get requests */
 app.get('/', keepIn, (req, res) => {
-    res.render('index');
-});
+    res.render('index')
+})
 
 app.get('/logout', (req, res) => {
-    req.logOut();
-    req.flash('success', "You have logged out");
-    res.redirect('/');
-});
+    req.logOut()
+    req.flash('success', "You have logged out")
+    res.redirect('/')
+})
 
 app.get('/signup', keepIn, (req, res) => {
-    res.render('signup');
-});
+    res.render('signup')
+})
 
 app.get('/user/main', keepOut, (req, res) => {
-    res.render('main');
-});
+    res.render('main')
+})
 
 app.get('/user/menu', keepOut, (req, res) => {
-    res.render('menu');
-});
+    res.render('menu')
+})
 
 app.get('/user/local', keepOut, (req, res) => {
-    const userid = {user: req.user.userid}.user;
+    const userid = {user: req.user.userid}.user
     pool.query(
         `select *
         from scores
@@ -68,26 +67,27 @@ app.get('/user/local', keepOut, (req, res) => {
         [userid],
         (error, results) => {
             if (error) {
-                throw error;
+                throw error
             }
 
-            let header = [];
-            let scores = [];
+            let header = []
+            let scores = []
 
-            header.push({row: "Score"});
-            header.push({row: "Time"});
-            header.push({row: "Date"});
+            header.push({row: "Score"})
+            header.push({row: "Time"})
+            header.push({row: "Date"})
 
             for (let i = 0; i < results.rows.length; i++) {
-                const score = results.rows[i].score;
-                const time = calculateTime(results.rows[i].time);
-                const date = JSON.stringify(results.rows[i].date).slice(1, 9) +
-                            (parseInt(JSON.stringify(results.rows[i].date).slice(9,11)) + 1);
+                const score = results.rows[i].score
+                const time = calculateTime(results.rows[i].time)
+                const date = JSON.stringify(results.rows[i].date).slice(6, 8) + "/" +
+                             (parseInt(JSON.stringify(results.rows[i].date).slice(9,11)) + 1)
+                             + "-" + JSON.stringify(results.rows[i].date).slice(3, 5)
                 
-                scores.push({score, time, date});
+                scores.push({score, time, date})
             }
 
-            res.render('local', {header, scores});
+            res.render('local', {header, scores})
         }
     )
 })
@@ -100,25 +100,26 @@ app.get('/user/global', keepOut, (req, res) => {
         limit 10`,
         (error, results) => {
             if (error) {
-                throw error;
+                throw error
             }
 
-            let header = [];
-            let scores = [];
+            let header = []
+            let scores = []
 
-            header.push({row: "User"});
-            header.push({row: "Score"});
-            header.push({row: "Time"});
-            header.push({row: "Date"});
+            header.push({row: "User"})
+            header.push({row: "Score"})
+            header.push({row: "Time"})
+            header.push({row: "Date"})
             
             for (let i = 0; i < results.rows.length; i++) {
-                const user = results.rows[i].username.slice(0, 10);
-                const score = results.rows[i].score;
-                const time = calculateTime(results.rows[i].time);
-                const date = JSON.stringify(results.rows[i].date).slice(1, 9) +
-                              (parseInt(JSON.stringify(results.rows[i].date).slice(9,11)) + 1);
+                const user = results.rows[i].username.slice(0, 10)
+                const score = results.rows[i].score
+                const time = calculateTime(results.rows[i].time)
+                const date = JSON.stringify(results.rows[i].date).slice(6, 8) + "/" +
+                             (parseInt(JSON.stringify(results.rows[i].date).slice(9,11)) + 1)
+                             + "-" + JSON.stringify(results.rows[i].date).slice(3, 5)
 
-                scores.push({user, score, time, date});
+                scores.push({user, score, time, date})
             }
 
             res.render('global', {header, scores})
@@ -127,42 +128,64 @@ app.get('/user/global', keepOut, (req, res) => {
 })
 
 
+/* Helper function to calculate time */
 function calculateTime(seconds) {
-    return seconds > 60 ? Math.round(seconds / 60) + "min, " + seconds % 60 + "s" : seconds + "s"
+    return seconds % 60 == 0 ? Math.floor(seconds / 60) + "m" :
+           seconds > 60 ? Math.floor(seconds / 60) + "m " + seconds % 60 + "s" :
+           seconds + "s"
 }
+
+
+/* Adding scores to database */
+app.post('/user/main', async (req, res) => {
+    const userid = {user: req.user.userid}.user
+    const {score, time} = req.body
+    
+    pool.query(
+        `insert into scores
+        values ($1, $2, $3, current_date)`,
+        [userid, score, time],
+        (error) => {
+            if (error) {
+                throw error
+            }
+            res.redirect('/user/menu')
+        }
+    )
+})
 
 
 /* Login function */
 app.post('/signup', async (req, res) => {
-    let { username, password, password2 } = req.body;
-    let errors = [];
+    let { username, password, password2 } = req.body
+    let errors = []
 
     if (!(username || password || password2)) {
-        errors.push({message: 'Please enter all fields'});
+        errors.push({message: 'Please enter all fields'})
     }
 
     if (username.length > 10) {
-        errors.push({message: 'Username cannot exceed 10 characters'});
+        errors.push({message: 'Username cannot exceed 10 characters'})
     }
 
     if (password.length < 6) {
-        errors.push({message: 'Passwords must be minimum 6 characters long'});
+        errors.push({message: 'Passwords must be minimum 6 characters long'})
     }
 
     if (password != password2) {
-        errors.push({message: 'Passwords must match'});
+        errors.push({message: 'Passwords must match'})
     }
 
     if (!(new RegExp('[0-9]')).test(password)) {
-        errors.push({message: 'Password must contain a number'});
+        errors.push({message: 'Password must contain a number'})
     }
 
     if (errors.length > 0) {
-        res.render('signup', {errors});
+        res.render('signup', {errors})
     
     /* If form validation passes */
     } else {
-        const encryptedpassword = await bcrypt.hash(password, await bcrypt.genSalt(10));
+        const encryptedpassword = await bcrypt.hash(password, await bcrypt.genSalt(10))
         pool.query(
             `select *
             from users
@@ -170,12 +193,12 @@ app.post('/signup', async (req, res) => {
             [username],
             (error, results) => {
                 if (error) {
-                    throw error;
+                    throw error
                 }
 
                 if (results.rows.length > 0) {
-                    errors.push({message: 'Username already taken'});
-                    res.render('signup', {errors});
+                    errors.push({message: 'Username already taken'})
+                    res.render('signup', {errors})
                 } else {
                     pool.query(
                         `insert into users(username, password)
@@ -184,37 +207,18 @@ app.post('/signup', async (req, res) => {
                         [username, encryptedpassword],
                         (error) => {
                             if (error) {
-                                throw error;
+                                throw error
                             }
 
-                            req.flash('success', 'You are now registered! Log in to continue.');
-                            res.redirect('/');
+                            req.flash('success', 'You are now registered! Log in to continue.')
+                            res.redirect('/')
                         }
-                    );
+                    )
                 }
             }
-        );
+        )
     }
-});
-
-
-/* Adding scores to database */
-app.post('/user/main', async (req, res) => {
-    const userid = {user: req.user.userid}.user;
-    const {score, time} = req.body;
-    
-    pool.query(
-        `insert into scores
-        values ($1, $2, $3, current_date)`,
-        [userid, score, time],
-        (error) => {
-            if (error) {
-                throw error;
-            }
-            res.redirect('/user/menu');
-        }
-    )
-});
+})
 
 
 /* When user tries to log in */
@@ -223,23 +227,23 @@ app.post('/', passport.authenticate('local', {
     failureRedirect: '/',
     failureFlash: true
     })
-);
+)
 
 
 /* Prevents logged in users from accesing signup/login screen */
 function keepIn(req, res, next) {
     if (req.isAuthenticated()) {
-        return res.redirect('/user/menu');
+        return res.redirect('/user/menu')
     } else {
-        next();
+        next()
     }
 }
 
 /* Only logged in users can access features */
 function keepOut(req, res, next) {
     if (req.isAuthenticated()) {
-        next();
+        next()
     } else {
-        return res.redirect('/');
+        return res.redirect('/')
     }
 }

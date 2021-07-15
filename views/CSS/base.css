@@ -1,13 +1,48 @@
-body {
+body{
     background: #e0dbcd;
     color: #010103;
 }
 
-.title{
+h1{
     margin: 0 0 50px;
     text-align: center;
     font-size: 70px;
     font-family: 'Arial Black';
+}
+
+
+/* Leaderboard table */
+table{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 50px;
+}
+
+table tr th{
+    padding: 0 50px;
+}
+
+table tr td{
+    border: 1px groove #f5f5f5;
+    border-radius: 5px;
+}
+
+
+/* Leaderboard podium */
+.gold{
+    color: gold;
+    text-shadow: -1px -1px 0 #010103, 1px -1px 0 #010103, -1px 1px 0 #010103, 1px 1px 0 #010103;
+}
+
+.silver{
+    color: silver;
+    text-shadow: -1px -1px 0 #010103, 1px -1px 0 #010103, -1px 1px 0 #010103, 1px 1px 0 #010103;
+}
+
+.bronze{
+    color: #CD7F32;
+    text-shadow: -1px -1px 0 #010103, 1px -1px 0 #010103, -1px 1px 0 #010103, 1px 1px 0 #010103;
 }
 
 
@@ -58,6 +93,7 @@ button{
     font-family: 'Arial Black';
     border-radius: 5px;
     margin: 30px 0 0;
+    width: 40%;
 }
 
 button a{
@@ -77,9 +113,11 @@ button a{
     text-align: center;
 }
 
-.menu{
-    width: 40%;
+.sticky{
+    position: sticky;
+    bottom: 10px;
 }
+
 
 
 
@@ -101,5 +139,17 @@ button a{
     .menu{
         width: 80%;
         margin-top: 100px;
+    }
+
+    .gold{
+        text-shadow: -2px -2px 0 #010103, 2px -2px 0 #010103, -2px 2px 0 #010103, 2px 2px 0 #010103;
+    }
+
+    .silver{
+        text-shadow: -2px -2px 0 #010103, 2px -2px 0 #010103, -2px 2px 0 #010103, 2px 2px 0 #010103;
+    }
+
+    .bronze{
+        text-shadow: -2px -2px 0 #010103, 2px -2px 0 #010103, -2px 2px 0 #010103, 2px 2px 0 #010103;
     }
 }

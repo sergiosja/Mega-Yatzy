@@ -6,30 +6,48 @@
     <link rel="stylesheet" type="text/css" href="/CSS/base.css">
 </head>
 <body>
-    <h1 class="title"> Global leaderboard </h1>
+    <h1> Global leaderboard </h1>
 
     <table>
         <tr>
-            <% if (typeof header != 'undefined') { %>
-                <% header.forEach (t => { %>
-                    <th class="header"> <%= t.row %> </th>
-                <% }) %>
-            <% } %>
-        </tr>
-        <% if (typeof scores != 'undefined') { %>
-            <% scores.forEach (t => { %>
-                <tr class="results">
-                    <td> <%= t.user %> </td>
-                    <td> <%= t.score %> </td>
-                    <td id="middle"> <%= t.time %> </td>
-                    <td> <%= t.date %> </td>
-                </tr>
+            <% header.forEach (t => { %>
+                <th> <%= t.row %> </th>
             <% }) %>
+        </tr>
+
+        <tr class="gold">
+            <td> <%= scores[0].user %> </td>
+            <td> <%= scores[0].score %> </td>
+            <td> <%= scores[0].time %> </td>
+            <td> <%= scores[0].date %> </td>
+        </tr>
+
+        <tr class="silver">
+            <td> <%= scores[1].user %> </td>
+            <td> <%= scores[1].score %> </td>
+            <td> <%= scores[1].time %> </td>
+            <td> <%= scores[1].date %> </td>
+        </tr>
+
+        <tr class="bronze">
+            <td> <%= scores[2].user %> </td>
+            <td> <%= scores[2].score %> </td>
+            <td> <%= scores[2].time %> </td>
+            <td> <%= scores[2].date %> </td>
+        </tr>
+        
+        <% for (let i = 3; i < scores.length; i++) { %>
+            <tr>
+                <td> <%= scores[i].user %> </td>
+                <td> <%= scores[i].score %> </td>
+                <td> <%= scores[i].time %> </td>
+                <td> <%= scores[i].date %> </td>
+            </tr>
         <% } %>
     </table>
 
     <div class="center">
-        <button> <a href="/user/menu"> Back </a> </button>
+        <button class="sticky"> <a href="/user/menu"> Back </a> </button>
     </div>
 </body>
 </html>
