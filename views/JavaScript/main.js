@@ -135,7 +135,7 @@ function calculateTime(seconds) {
     let text = "You spent "
 
     if (seconds > 60) {
-        const minutes = Math.round(seconds / 60)
+        const minutes = Math.floor(seconds / 60)
         if (minutes > 1) {
             text += minutes + " minutes and " + seconds % 60 + " seconds playing."
         } else {

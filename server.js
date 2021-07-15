@@ -79,8 +79,8 @@ app.get('/user/local', keepOut, (req, res) => {
             for (let i = 0; i < results.rows.length; i++) {
                 const score = results.rows[i].score
                 const time = calculateTime(results.rows[i].time)
-                const date = JSON.stringify(results.rows[i].date).slice(6, 8) + "/" +
-                             (parseInt(JSON.stringify(results.rows[i].date).slice(9,11)) + 1)
+                const date = (parseInt(JSON.stringify(results.rows[i].date).slice(9,11)) + 1)
+                             + "/" + JSON.stringify(results.rows[i].date).slice(6, 8)
                              + "-" + JSON.stringify(results.rows[i].date).slice(3, 5)
                 
                 scores.push({score, time, date})
@@ -113,8 +113,8 @@ app.get('/user/global', keepOut, (req, res) => {
                 const user = results.rows[i].username.slice(0, 10)
                 const score = results.rows[i].score
                 const time = calculateTime(results.rows[i].time)
-                const date = JSON.stringify(results.rows[i].date).slice(6, 8) + "/" +
-                             (parseInt(JSON.stringify(results.rows[i].date).slice(9,11)) + 1)
+                const date = (parseInt(JSON.stringify(results.rows[i].date).slice(9,11)) + 1)
+                             + "/" + JSON.stringify(results.rows[i].date).slice(6, 8)
                              + "-" + JSON.stringify(results.rows[i].date).slice(3, 5)
 
                 scores.push({user, score, time, date})
