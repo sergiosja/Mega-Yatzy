@@ -11,24 +11,6 @@ body {
 }
 
 
-/*  */
-.firstpart{
-    display: block;
-    float: left;
-    width: 50%;
-}
-
-.secondpart{
-    display: block;
-    float: right;
-    width: 50%;
-}
-
-.menu{
-    width: 40%;
-}
-
-
 /* Messages */
 ul li{
     list-style: none;
@@ -95,6 +77,9 @@ button a{
     text-align: center;
 }
 
+.menu{
+    width: 40%;
+}
 
 
 
@@ -111,5 +96,10 @@ button a{
     .login input{
         font-size: 90px;
         width: 90%;
+    }
+
+    .menu{
+        width: 80%;
+        margin-top: 100px;
     }
 }
