@@ -29,7 +29,6 @@ ul li{
 }
 
 
-
 /* Login */
 .login{
     display: block;
@@ -94,9 +93,5 @@ button a{
     .login input{
         font-size: 90px;
         width: 90%;
-    }
-
-    ul li{
-        font-size: 60px;
     }
 }

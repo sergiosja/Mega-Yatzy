@@ -125,14 +125,17 @@ function collapse(index) {
 function gameover() {
     modal.style.display = "block";
     totalsum += bonus >= 84 ? 50 : 0;
+    totaltime = Math.round(performance.now() / 1000);
 
     document.querySelector("#modal-score").innerHTML = "You got a total score of " + totalsum + ".";
-    document.querySelector("#modal-time").innerHTML = calculateTime();
+    document.querySelector("#modal-time").innerHTML = calculateTime(totaltime);
+    
+    document.querySelector("#score").value = totalsum;
+    document.querySelector("#time").value = totaltime;
 }
 
 /* Helper function to calculate game time */
-function calculateTime() {
-    let seconds = Math.round(performance.now() / 1000);
+function calculateTime(seconds) {
     let text = "You spent ";
 
     if (seconds > 60) {

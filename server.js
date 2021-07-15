@@ -31,9 +31,7 @@ app.use(flash());
 
 
 /* Run server */
-app.listen(PORT, () => {
-    console.log('Server is running');
-});
+app.listen(PORT);
 
 
 /* Get requests */
@@ -126,6 +124,26 @@ app.post('/signup', async (req, res) => {
 });
 
 
+/* Adding scores to database */
+app.post('/user/main', async (req, res) => {
+    const userid = {user: req.user.userid}.user;
+    const {score, time} = req.body;
+    
+    pool.query(
+        `insert into scores
+        values ($1, $2, $3, current_date)`,
+        [userid, score, time],
+        (error) => {
+            if (error) {
+                throw error;
+            }
+            res.redirect('/user/menu');
+        }
+    )
+});
+
+
+/* When user tries to log in */
 app.post('/', passport.authenticate('local', {
     successRedirect: '/user/menu',
     failureRedirect: '/',
