@@ -39,6 +39,12 @@ app.get('/', keepIn, (req, res) => {
     res.render('index');
 });
 
+app.get('/logout', (req, res) => {
+    req.logOut();
+    req.flash('success', "You have logged out");
+    res.redirect('/');
+});
+
 app.get('/signup', keepIn, (req, res) => {
     res.render('signup');
 });
@@ -51,11 +57,79 @@ app.get('/user/menu', keepOut, (req, res) => {
     res.render('menu');
 });
 
-app.get('/logout', (req, res) => {
-    req.logOut();
-    req.flash('success', "You have logged out");
-    res.redirect('/');
-});
+app.get('/user/local', keepOut, (req, res) => {
+    const userid = {user: req.user.userid}.user;
+    pool.query(
+        `select *
+        from scores
+        where userid = $1
+        order by score desc, time asc, date
+        limit 5`,
+        [userid],
+        (error, results) => {
+            if (error) {
+                throw error;
+            }
+
+            let header = [];
+            let scores = [];
+
+            header.push({row: "Score"});
+            header.push({row: "Time"});
+            header.push({row: "Date"});
+
+            for (let i = 0; i < results.rows.length; i++) {
+                const score = results.rows[i].score;
+                const time = calculateTime(results.rows[i].time);
+                const date = JSON.stringify(results.rows[i].date).slice(1, 9) +
+                            (parseInt(JSON.stringify(results.rows[i].date).slice(9,11)) + 1);
+                
+                scores.push({score, time, date});
+            }
+
+            res.render('local', {header, scores});
+        }
+    )
+})
+
+app.get('/user/global', keepOut, (req, res) => {
+    pool.query(
+        `select username, score, time, date
+        from scores, users
+        order by score desc, time asc, date
+        limit 10`,
+        (error, results) => {
+            if (error) {
+                throw error;
+            }
+
+            let header = [];
+            let scores = [];
+
+            header.push({row: "User"});
+            header.push({row: "Score"});
+            header.push({row: "Time"});
+            header.push({row: "Date"});
+            
+            for (let i = 0; i < results.rows.length; i++) {
+                const user = results.rows[i].username.slice(0, 10);
+                const score = results.rows[i].score;
+                const time = calculateTime(results.rows[i].time);
+                const date = JSON.stringify(results.rows[i].date).slice(1, 9) +
+                              (parseInt(JSON.stringify(results.rows[i].date).slice(9,11)) + 1);
+
+                scores.push({user, score, time, date});
+            }
+
+            res.render('global', {header, scores})
+        }
+    )
+})
+
+
+function calculateTime(seconds) {
+    return seconds > 60 ? Math.round(seconds / 60) + "min, " + seconds % 60 + "s" : seconds + "s"
+}
 
 
 /* Login function */

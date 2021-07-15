@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Local | Mega Yatzy </title>
+    <link rel="stylesheet" type="text/css" href="/CSS/base.css">
+</head>
+<body>
+    <h1 class="title"> Local leaderboard </h1>
+
+    <table>
+        <tr>
+            <% if (typeof header != 'undefined') { %>
+                <% header.forEach (t => { %>
+                    <th class="header"> <%= t.row %> </th>
+                <% }) %>
+            <% } %>
+        </tr>
+        <% if (typeof scores != 'undefined') { %>
+            <% scores.forEach (t => { %>
+                <tr class="results">
+                    <td> <%= t.score %> </td>
+                    <td id="middle"> <%= t.time %> </td>
+                    <td> <%= t.date %> </td>
+                </tr>
+            <% }) %>
+        <% } %>
+    </table>
+
+    <div class="center">
+        <button> <a href="/user/menu"> Back </a> </button>
+    </div>
+</body>
+</html>

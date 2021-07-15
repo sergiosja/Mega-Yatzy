@@ -11,6 +11,24 @@ body {
 }
 
 
+/*  */
+.firstpart{
+    display: block;
+    float: left;
+    width: 50%;
+}
+
+.secondpart{
+    display: block;
+    float: right;
+    width: 50%;
+}
+
+.menu{
+    width: 40%;
+}
+
+
 /* Messages */
 ul li{
     list-style: none;
@@ -72,7 +90,7 @@ button a{
 }
 
 
-/* Helper to center elements within a div */
+/* Helper methods */
 .center{
     text-align: center;
 }
