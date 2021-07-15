@@ -63,7 +63,7 @@ app.get('/user/local', keepOut, (req, res) => {
         from scores
         where userid = $1
         order by score desc, time asc, date
-        limit 5`,
+        limit 30`,
         [userid],
         (error, results) => {
             if (error) {
@@ -72,7 +72,6 @@ app.get('/user/local', keepOut, (req, res) => {
 
             let header = []
             let scores = []
-
             header.push({row: "Score"})
             header.push({row: "Time"})
             header.push({row: "Date"})
@@ -97,7 +96,7 @@ app.get('/user/global', keepOut, (req, res) => {
         `select username, score, time, date
         from scores, users
         order by score desc, time asc, date
-        limit 10`,
+        limit 40`,
         (error, results) => {
             if (error) {
                 throw error
@@ -105,7 +104,6 @@ app.get('/user/global', keepOut, (req, res) => {
 
             let header = []
             let scores = []
-
             header.push({row: "User"})
             header.push({row: "Score"})
             header.push({row: "Time"})

@@ -129,6 +129,7 @@ function gameover() {
     document.querySelector("#time").value = totaltime
 }
 
+
 /* Helper function to calculate game time */
 function calculateTime(seconds) {
     let text = "You spent "

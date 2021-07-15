@@ -22,17 +22,12 @@ button{
     font-size: 30px;
     font-family: 'Arial Black';
     border-radius: 5px;
+    margin: 30px 0 0;
 }
 
 button a{
     color: #010103;
     text-decoration: none;
-}
-
-.bottom-btn button{
-    margin-top: 30px;
-    background: #e0dbcd;
-    border: 3px solid #2c2d2b;
 }
 
 
@@ -135,9 +130,13 @@ ul li{
 }
 
 
-/* Helper to center elements within a div */
+/* Helper classes */
 .center{
     text-align: center;
+}
+
+.widen{
+    width: 40%;
 }
 
 
@@ -147,6 +146,10 @@ ul li{
 @media only screen and (max-device-width: 450px) {
     button{
         font-size: 60px;
+    }
+
+    .widen{
+        width: 80%;
     }
 
     #diceroller{

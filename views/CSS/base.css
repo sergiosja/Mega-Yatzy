@@ -101,14 +101,8 @@ button a{
     text-decoration: none;
 }
 
-.bottom-btn button{
-    margin-top: 30px;
-    background: #e0dbcd;
-    border: 3px solid #2c2d2b;
-}
 
-
-/* Helper methods */
+/* Helper classes */
 .center{
     text-align: center;
 }
@@ -129,16 +123,12 @@ button a{
 
     button{
         font-size: 60px;
+        width: 80%;
     }
 
     .login input{
         font-size: 90px;
         width: 90%;
-    }
-
-    .menu{
-        width: 80%;
-        margin-top: 100px;
     }
 
     .gold{
