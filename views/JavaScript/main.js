@@ -72,7 +72,7 @@ function checkFinished() {
     for (let i = 0; i < finished.length; i++) {
         if (finished[i] == 6 || (i > 0 && finished[i] == 3)) {
             categories[i].disabled = true
-            categories[i].style.background = "#4b5320"
+            categories[i].style.background = "#553a41"
             categories[i].style.color = "#010103"
             finished[i] = 10
             collapse(i)
@@ -84,7 +84,7 @@ function checkFinished() {
 /* Disables buttons */
 function disable(e) {
     category[e].disabled = true
-    category[e].style.background = "#4b5320"
+    category[e].style.background = "#553a41"
     category[e].style.color = "#010103"
 
     rolled = 0

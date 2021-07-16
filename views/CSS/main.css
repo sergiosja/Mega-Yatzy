@@ -60,6 +60,7 @@ ul li{
 
     font-size: 40px;
     border: 3px solid #2c2d2b;
+    background: #ebdccb;
 
     cursor: pointer;
 }
@@ -72,8 +73,10 @@ ul li{
 
 /* Collapsible */
 .categories{
-    background: #e0dbcd;
-    border: 3px solid #2c2d2b;
+    background: #928c6f;
+    color: #c3c48d;
+    border: 3px solid #010103;
+    text-shadow: -1px -1px 0 #010103, 1px -1px 0 #010103, -1px 1px 0 #010103, 1px 1px 0 #010103;
     
     text-align: center;    
     font-size: 30px;
@@ -101,6 +104,7 @@ ul li{
 
 .inner{
     font-size: 25px;
+    margin: 0 0 15px;
 }
 
 

@@ -94,7 +94,8 @@ app.get('/user/local', keepOut, (req, res) => {
 app.get('/user/global', keepOut, (req, res) => {
     pool.query(
         `select username, score, time, date
-        from scores, users
+        from scores s
+        inner join users u on (s.userid = u.userid)
         order by score desc, time asc, date
         limit 40`,
         (error, results) => {
