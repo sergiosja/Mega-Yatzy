@@ -63,6 +63,18 @@
 
     <div class="flex">
         <div class="section center">
+            <h3> END GAME </h3>
+            <p>
+                When you're done, click the "SUM"-button at the bottom, and the following will pop up.
+                You will be shown your final score, and how long you were playing. If you want, you can
+                add it to the leaderboards.
+            </p>
+            <img src="/Images/showscore.png">
+        </div>
+    </div>
+
+    <div class="flex">
+        <div class="section center">
             <h2> Score options </h2>
             <p>
                 Each main category has sub-categories, and each sub-category adds a value to the total
@@ -120,6 +132,63 @@
                 Straight Flush is an ordered "big straight" (1, 2, 3, 4, 5, 6). It gives a fixed 150 points.
             </p>
             <img src="/Images/sixth.png">
+        </div>
+    </div>
+
+    <div class="flex">
+        <div class="section center">
+            <h3> FAQS </h3>
+            <br>
+
+            <p>
+                <strong> Q: I forgot to register my score on the leaderboard, what can I do? </strong>
+            </p>
+            <p>
+                I'm afraid there is no way to retrieve a score if you don't put it on the leaderboard.
+                The reason you have to do this manually after each game is due to consent, since the global
+                leaderboard shows usernames. In the future I might add an extra option for scores to only
+                be registered on local leaderboards.
+            </p>
+            <br>
+
+            <p>
+                <strong> Q: How exactly are the passwords protected? </strong>
+            </p>
+            <p>
+                The passwords are salted and hashed, with multiple layers of encryption before they are
+                stored in the database. Despite this I would still encourage you to have a strong password.
+            </p>
+            <br>
+
+            <p>
+                <strong> Q: I'm out of rolls, but my dice don't meet any of the section criteria! </strong>
+            </p>
+            <p>
+                You will have to sacrifice a section. Click the section you want to "waste",
+                and you will get 3 new rolls for a new round. In my experience, it's best to cross off
+                values like "big straight" and "three pairs" when met with this ultimatum. If you can get
+                an extra 4, 5 or 6 when going for "Ones through Sixes", you can cross off "ones" and still
+                get the bonus.
+            </p>
+            <br>
+            
+            <p>
+                <strong> Q: I have multiple pair values in my dice, how can I choose the biggest ones? </strong>
+            </p>
+            <p>
+                You will always be awarded the highest possible sum. If you have two fives and two threes,
+                the program will award you 10 points rather than 6. No need for any mental arithemtics :)
+            </p>
+            <br>
+
+            <p>
+                <strong> Q: What happens if multiple users get the same high score? </strong>
+            </p>
+            <p>
+                The global leaderboard is sorted by 1. score, and 2. time spent. If two user have the same
+                exact score and spent the same exact time playing, the user who got there first will be shown
+                on top. The best score you can get is 819.
+            </p>
         </div>
     </div>
 

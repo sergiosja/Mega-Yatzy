@@ -66,7 +66,7 @@ app.get('/user/local', keepOut, (req, res) => {
         `select *
         from scores
         where userid = $1
-        order by score desc, time asc, date
+        order by score desc, time asc, date asc
         limit 30`,
         [userid],
         (error, results) => {
