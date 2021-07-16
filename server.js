@@ -52,6 +52,10 @@ app.get('/user/main', keepOut, (req, res) => {
     res.render('main')
 })
 
+app.get('/user/tutorial', keepOut, (req, res) => {
+    res.render('tutorial')
+})
+
 app.get('/user/menu', keepOut, (req, res) => {
     res.render('menu')
 })
