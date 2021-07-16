@@ -6,16 +6,18 @@
     <link rel="stylesheet" type="text/css" href="/CSS/base.css">
 </head>
 <body>
-    <h1> Global leaderboard </h1>
+    <h1> GLOBAL LEADERBOARD </h1>
 
     <table>
         <tr>
+            <th></th>
             <% header.forEach (t => { %>
                 <th> <%= t.row %> </th>
             <% }) %>
         </tr>
 
         <tr class="gold">
+            <td> 1 </td>
             <td> <%= scores[0].user %> </td>
             <td> <%= scores[0].score %> </td>
             <td> <%= scores[0].time %> </td>
@@ -23,6 +25,7 @@
         </tr>
 
         <tr class="silver">
+            <td> 2 </td>
             <td> <%= scores[1].user %> </td>
             <td> <%= scores[1].score %> </td>
             <td> <%= scores[1].time %> </td>
@@ -30,6 +33,7 @@
         </tr>
 
         <tr class="bronze">
+            <td> 3 </td>
             <td> <%= scores[2].user %> </td>
             <td> <%= scores[2].score %> </td>
             <td> <%= scores[2].time %> </td>
@@ -38,6 +42,7 @@
         
         <% for (let i = 3; i < scores.length; i++) { %>
             <tr>
+                <td> <%= i+1 %> </td>
                 <td> <%= scores[i].user %> </td>
                 <td> <%= scores[i].score %> </td>
                 <td> <%= scores[i].time %> </td>
