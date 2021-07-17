@@ -97,11 +97,11 @@ app.get('/user/local', keepOut, (req, res) => {
 
 app.get('/user/global', keepOut, (req, res) => {
     pool.query(
-        `select username, score, time, date
+        `select distinct username, score, time, date
         from scores s
         inner join users u on (s.userid = u.userid)
         order by score desc, time asc, date
-        limit 40`,
+        limit 30`,
         (error, results) => {
             if (error) {
                 throw error
@@ -115,7 +115,7 @@ app.get('/user/global', keepOut, (req, res) => {
             header.push({row: "Date"})
             
             for (let i = 0; i < results.rows.length; i++) {
-                const user = results.rows[i].username.slice(0, 10)
+                const user = results.rows[i].username.slice(0, 10).toLowerCase()
                 const score = results.rows[i].score
                 const time = calculateTime(results.rows[i].time)
                 const date = (parseInt(JSON.stringify(results.rows[i].date).slice(9,11)) + 1)
