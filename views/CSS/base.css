@@ -130,6 +130,10 @@ button{
     width: 40%;
 }
 
+button:hover{
+    background: #dcdcdc;
+}
+
 button a{
     color: #010103;
     text-decoration: none;
@@ -158,6 +162,10 @@ button a{
     button{
         font-size: 60px;
         width: 80%;
+    }
+
+    .button-margin{
+        margin-top: 100px;
     }
 
     .login input{

@@ -25,6 +25,10 @@ button{
     margin: 30px 0 0;
 }
 
+button:hover{
+    background: #dcdcdc;
+}
+
 button a{
     color: #010103;
     text-decoration: none;
@@ -88,6 +92,10 @@ ul li{
     width: 80%;
 
     align-self: center;
+}
+
+.categories:hover{
+    background: #c2bca0;
 }
 
 .content{
