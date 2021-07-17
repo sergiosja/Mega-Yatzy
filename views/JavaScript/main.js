@@ -113,13 +113,19 @@ function disable(e) {
     category[e].style.background = "#553a41"
     category[e].style.color = "#010103"
 
-    rolled = 0
-    remainingrolls += 3
-    dierollmsg.innerHTML = "Check! " + remainingrolls + " rolls left."
-
     window.scroll({ top: 0, behavior: "smooth" })
     checkFinished()
     unlock()
+
+    if (finished.reduce((a, b) => a + b, 0) == 60) {
+        dierollmsg.innerHTML = "You have decided to end the game."
+        gameover()
+        return
+    }
+
+    rolled = 0
+    remainingrolls += 3
+    dierollmsg.innerHTML = "Check! " + remainingrolls + " rolls left."
 }
 
 
