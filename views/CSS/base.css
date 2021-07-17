@@ -40,6 +40,10 @@ video{
     height: 300px;
 }
 
+img{
+    width: 600px;
+}
+
 
 /* Leaderboard table */
 table{
