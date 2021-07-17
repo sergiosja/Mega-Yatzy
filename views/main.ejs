@@ -8,8 +8,7 @@
     <body>
         <h1 class="title"> MEGA YATZY </h1>
 
-        <p id="dieroll-msg"> Roll the die to start. </p>
-
+        <!-- Modal to show score -->
         <div id="modal" class="modal">
             <div class="modal-content">
                 <p id="modal-score"></p>
@@ -30,6 +29,16 @@
             </div>
         </div>
 
+        <!-- Modal to help with scores -->
+        <div id="helper-modal" class="modal">
+            <div class="modal-content">
+                <p id="modal-helper-text"></p>
+            </div>
+        </div>
+
+
+        <p id="dieroll-msg"> Roll the die to start. </p>
+        
         <div class="center">
             <button onclick="rolldice()" id="diceroller"> ROLL </button>
         </div>
@@ -52,6 +61,7 @@
                 <button class="category" onclick="singles(4)"> FOURS </button>
                 <button class="category" onclick="singles(5)"> FIVES </button>
                 <button class="category" onclick="singles(6)"> SIXES </button>
+                <button class="helper-modal-button" onclick="helpmodal(0)"> Help </button>
             </div>
 
             <button onclick="collapse(1)" type="button" class="categories"> PAIRS </button>
@@ -59,6 +69,7 @@
                 <button class="category" onclick="pairs(6, true)"> ONE PAIR </button>
                 <button class="category" onclick="pairs(7, true)"> TWO PAIRS </button>
                 <button class="category" onclick="pairs(8, true)"> THREE PAIRS </button>
+                <button class="helper-modal-button" onclick="helpmodal(1)"> Help </button>
             </div>
 
             <button onclick="collapse(2)" type="button" class="categories"> KINDS </button>
@@ -66,6 +77,7 @@
                 <button class="category" onclick="kinds(9, true)"> THREE OF A KIND </button>
                 <button class="category" onclick="kinds(10, true)"> FOUR OF A KIND </button>
                 <button class="category" onclick="kinds(11, true)"> FIVE OF A KIND </button>
+                <button class="helper-modal-button" onclick="helpmodal(2)"> Help </button>
             </div>
 
             <button onclick="collapse(3)" type="button" class="categories"> STRAIGHTS </button>
@@ -73,6 +85,7 @@
                 <button class="category" onclick="straights([1, 2, 3, 4, 5], 12)"> SMALL STRAIGHT </button>
                 <button class="category" onclick="straights([2, 3, 4, 5, 6], 13)"> BIG STRAIGHT </button>
                 <button class="category" onclick="straights([1, 2, 3, 4, 5, 6], 14)"> FULL STRAIGHT </button>
+                <button class="helper-modal-button" onclick="helpmodal(3)"> Help </button>
             </div>
 
             <button onclick="collapse(4)" type="button" class="categories"> SETTLEMENTS </button>
@@ -80,6 +93,7 @@
                 <button class="category" onclick="cottage()"> COTTAGE </button>
                 <button class="category" onclick="house()"> HOUSE </button>
                 <button class="category" onclick="tower()"> TOWER </button>
+                <button class="helper-modal-button" onclick="helpmodal(4)"> Help </button>
             </div>
 
             <button onclick="collapse(5)" type="button" class="categories"> CHANCE, YATZY, SF </button>
@@ -87,11 +101,12 @@
                 <button class="category" onclick="chance()"> CHANCE </button>
                 <button class="category" onclick="yatzy()"> YATZY </button>
                 <button class="category" onclick="straightflush([1, 2, 3, 4, 5, 6])"> STRAIGHT FLUSH </button>
+                <button class="helper-modal-button" onclick="helpmodal(5)"> Help </button>
             </div>
         </div>
 
         <div class="center">
-            <button class="widen" onclick="gameover()"> SUM </button>
+            <button class="widen" onclick="gameover()"> END GAME </button>
         </div>
 
         <div class="center">

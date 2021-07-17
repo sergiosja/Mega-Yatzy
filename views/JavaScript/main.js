@@ -12,6 +12,32 @@ const finished = [0, 0, 0, 0, 0, 0]
 /* Modal relevant */
 const modal = document.querySelector("#modal")
 const sumbutton = document.querySelector("#sumbutton")
+const helpermodal = document.querySelector("#helper-modal")
+const modalhelp = document.querySelector("#modal-helper-text")
+const modalhelpoptions = ["These add the respective sum of all die showing the value 1, 2, 3, 4, 5 and 6. <br> <br> \
+                          If you manage a combined score of 84 from these (4 of each), you will get an additional \
+                          bonus of 50 points!",
+
+                          "These add the respective sum of die showing one, two and three pairs.",
+
+                          "These add the respective sum of die showing three, four and five kinds of the same value.",
+
+                          "Small straight adds 15 points if your die include 1, 2, 3, 4 and 5. <br> \
+                          Big straight adds 20 points if your die include 2, 3, 4, 5 and 6. <br> \
+                          Full straight adds 21 points if your die include 1, 2, 3, 4, 5 and 6. <br> \
+                          The combinations do not need to be ordered, and die showing [1, 2, 3, 4, 5] \
+                          and [5, 3, 1, 4, 2] are equally valid 15 points.",
+
+                          "Cottage adds the sum of a 'one pair' and a 'three of a kind'. <br> \
+                          Villa adds the sum of two 'three of a kind's. <br> \
+                          Tower adds the sum of a 'one pair' and a 'four of a kind'. <br> <br> \
+                          It goes without saying that the combination values have to be different. The highest \
+                          attainable value for a villa is 33 (6x3 + 5x3) rather than 36 (6x6).",
+
+                          "Chance adds the sum of all die, a useful option if you cannot fulfill any other option. <br> \
+                          Yatzy adds the sum of all die if they are similar, and throws a 100 point bonus on top of that. <br> \
+                          Straight Flush is an ordered 'big straight' (1, 2, 3, 4, 5, 6). It gives a fixed 150 points."
+                        ]
 
 /* Die rolls */
 const dierollmsg = document.querySelector("#dieroll-msg")
@@ -127,6 +153,25 @@ function gameover() {
 
     document.querySelector("#score").value = totalsum
     document.querySelector("#time").value = totaltime
+}
+
+
+/* Function to display help text for score options */
+function helpmodal(nr) {
+    helpermodal.style.display = "block"
+
+    for (let i = 0; i < 6; i++) {
+        if (nr == i) {
+            modalhelp.innerHTML = modalhelpoptions[i]
+        }
+    }
+}
+
+/* Helper function to close modal */
+window.onclick = e => {
+    if (e.target == helpermodal) {
+        helpermodal.style.display = "none"
+    }
 }
 
 

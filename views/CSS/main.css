@@ -109,7 +109,7 @@ ul li{
 
 
 /* Modal */
-.modal {
+.modal{
     display: none;
     position: fixed;
     z-index: 1;
@@ -122,7 +122,7 @@ ul li{
     background-color: rgba(0,0,0,0.4);
 }
   
-.modal-content {
+.modal-content{
     margin: auto;
     padding: 20px;
     width: 80%;    
@@ -131,6 +131,19 @@ ul li{
     background-color: #e0dbcd;
     border: 5px solid #2c2d2b;
     border-radius: 30px;   
+}
+
+.helper-modal-button{
+    background: #202020;
+    color: #f5f5f5;
+
+    font-size: 25px;
+    margin: 0 0 15px;
+}
+
+#modal-helper-text{
+    padding: 20px 50px;
+    font-size: 30px;
 }
 
 
@@ -174,7 +187,7 @@ ul li{
         width: 95%;
     }
 
-    .inner{
+    .category, .helper-modal-button{
         font-size: 40px;
         padding: 5px;
         margin: 10px 10px;
@@ -184,7 +197,7 @@ ul li{
         padding-top: 400px;
     }
 
-    .modal-content{
+    .modal-content, #modal-helper-text{
         font-size: 50px;
     }
 }
