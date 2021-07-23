@@ -1,9 +1,9 @@
 # Mega-Yatzy
 
-Dette er en replika av det kjente spillet, med utgangspunkt i [Maxi-Yatzy](https://en.wikipedia.org/wiki/Yatzy#Maxi_Yatzy). Her kan du opprette en bruker med passord, spille runder med Yatzy og lagre poengsummen i en database. Du vil da ha tilgang til poengsummen (og annen relevant informasjon) i en lokal tabell. Du vil også være med å konkurrere i den globale tabellen, hvor alle kan kjempe om heder og ære. I tillegg finnes det en brukerveiledning for hvordan man spillet fungerer. <br>
+This is a replica of the familiar Yatzy-game, based on the [Maxi-Yatzy version](https://en.wikipedia.org/wiki/Yatzy#Maxi_Yatzy). Here you can create a password-protected user, play rounds of Yatzy, and save your scores in a database. Thereafter you will have access to your score (and other relevant info) in a local table. In addition, you will be able to compete in the global table, where everyone can fight for their honour. You will also find a tutorial for how to play the game. <br>
 
-Om det ikke er nøye for deg å lagre poengsummen, kan du spille enkeltrunder [her](https://github.com/sergiosja/Yatzy). På denne siden vil du også kunne lese deg opp på reglene. <br>
+If you do not care much for saving your scores, you can play singles [here](https://github.com/sergiosja/Yatzy). On this page you can also read up on the rules of the game. <br>
 
-Dette er et fullstack prosjekt som jeg har utført med JavaScript, HTML/EJS og CSS for frontend (client-side), og JavaScript i Node.js for backend (server-side). Brukere og poengsummer blir lagret i en PostgreSQL database. <br>
+This is a fullstack project I developed with JavaScript, HTML/EJS and CSS for the frontend (client-side), and JavaScript in Node.js for the backend (server-side). Users and scores are saved in a PostgreSQL database. The passwords are salted and hashed upon saving, though I would still recommend you use a strong password. <br>
 
-For øyeblikket kjører prosjektet bare lokalt på min maskin, men planen er å laste det opp til høsten :)
+As of right now, the project only runs locally on my machine, but I plan on putting it up somewhere this fall :)
