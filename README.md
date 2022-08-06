@@ -6,4 +6,4 @@ If you do not care much for saving your scores, you can play singles [here](http
 
 This is a fullstack project I developed with JavaScript, HTML/EJS and CSS for the frontend (client-side), and JavaScript in Node.js for the backend (server-side). Users and scores are saved in a PostgreSQL database. The passwords are salted and hashed upon saving, though I would still recommend you use a strong password. <br>
 
-As of right now, the project only runs locally on my machine, but I plan on putting it up somewhere this fall :)
+As of right now, the project only runs locally on my machine, but I plan on putting it up as soon as I get my hands on a Raspberry Pi :)
